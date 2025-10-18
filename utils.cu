@@ -7,10 +7,10 @@
 #define RST     "\033[0m"
 
 #define STR_HELPER(x) #x
-#define STR(x) STR_HELPER(x)
-#define ERR RED "[ERROR]\t" RST 
-#define INFO GRN "[INFO]\t" RST
+#define STR(x)        STR_HELPER(x)
 
+#define ERR  RED "[ERROR]\t" RST
+#define INFO GRN "[INFO]\t"  RST
 // clang-format on
 
 void get_device_properties()
@@ -24,13 +24,13 @@ void get_device_properties()
     cudaGetDeviceCount(&n_devices);
     fprintf(stderr, INFO "%d CUDA capable devices detected.\n", n_devices);
 
-    for (int i=0; i<n_devices;i++)
+    for (int i = 0; i < n_devices; i++)
     {
         cudaDeviceProp p;
         cudaGetDeviceProperties(&p, i);
-        fprintf(stderr,"-----------------------+\n", i);
-        fprintf(stderr, INFO "Device #%d      |\n", i);
-        fprintf(stderr,"-----------------------+\n\n", i);
+        fprintf(stderr, "+" "----------------------+\n", i);
+        fprintf(stderr, "|" INFO "Device #%d      |\n", i);
+        fprintf(stderr, "+" "----------------------+\n\n", i);
         fprintf(stderr, INFO "Name:\t\t\t %s\n", p.name);
         fprintf(stderr, INFO "Warp Size:\t\t %d\n", p.warpSize);
         fprintf(stderr, INFO "Total Const Memory (KB): %zu\n", p.totalConstMem / 1024);
@@ -41,7 +41,6 @@ void get_device_properties()
         fprintf(stderr, INFO "Unified Addresssing:\t %d\n", p.unifiedAddressing);
     }
 }
-
 int main()
 {
     get_device_properties();
