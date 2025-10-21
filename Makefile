@@ -1,5 +1,6 @@
+OPTS="-Wall -Wextra -Wno-format-extra-args"
 %: %.cu
-	nvcc $< -o $@
+	nvcc -Xcompiler $(OPTS) $< -o $@
 	./$@
 
 sharp:

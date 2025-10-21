@@ -28,9 +28,9 @@ void get_device_properties()
     {
         cudaDeviceProp p;
         cudaGetDeviceProperties(&p, i);
-        fprintf(stderr, "+" "----------------------+\n", i);
-        fprintf(stderr, "|" INFO "Device #%d      |\n", i);
-        fprintf(stderr, "+" "----------------------+\n\n", i);
+        fprintf(stderr, "\t\t+" "----------------------+\n", i);
+        fprintf(stderr, "\t\t|" INFO "Device #%d      |\n", i);
+        fprintf(stderr, "\t\t+" "----------------------+\n\n", i);
         fprintf(stderr, INFO "Name:\t\t\t %s\n", p.name);
         fprintf(stderr, INFO "Warp Size:\t\t %d\n", p.warpSize);
         fprintf(stderr, INFO "Total Const Memory (KB): %zu\n", p.totalConstMem / 1024);
